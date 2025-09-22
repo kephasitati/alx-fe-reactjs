@@ -15,7 +15,7 @@ function Search() {
     e.preventDefault();
     if (!searchTerm) return;
     setLoading(true);
-    setError(null);
+    setError('Looks like we cant find the user');
     setUserData(null);
     // API call will go here in Step 2
     setLoading(false); 
