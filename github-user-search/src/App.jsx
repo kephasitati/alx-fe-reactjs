@@ -1,4 +1,5 @@
 import './App.css';
+import Search from './components/Search';
 
 function App() {
   return (
@@ -7,8 +8,7 @@ function App() {
         <h1 className="text-2xl font-bold">GitHub User Search</h1>
       </header>
       <main className="flex-1 w-full max-w-4xl p-4">
-        {/* Placeholder for search input and results */}
-        <p className="text-center">Search functionality coming soon...</p>
+        <Search />
       </main>
     </div>
   );
