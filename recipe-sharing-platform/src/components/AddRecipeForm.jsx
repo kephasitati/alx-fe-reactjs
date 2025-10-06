@@ -4,13 +4,12 @@ function AddRecipeForm() {
   const [formData, setFormData] = useState({
     title: '',
     ingredients: '',
-    instructions: ''
+    steps: ''
   });
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const validate = () => {
@@ -22,8 +21,8 @@ function AddRecipeForm() {
     if (ingList.length < 2) {
       newErrors.ingredients = 'At least two ingredients are required (separate by lines or commas)';
     }
-    if (!formData.instructions.trim()) {
-      newErrors.instructions = 'Instructions are required';
+    if (!formData.steps.trim()) {
+      newErrors.steps = 'Steps are required';
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -32,11 +31,9 @@ function AddRecipeForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      // Simulate submission (e.g., post to API or add to local data)
       console.log('Form submitted:', formData);
       alert('Recipe added successfully!');
-      // Reset form
-      setFormData({ title: '', ingredients: '', instructions: '' });
+      setFormData({ title: '', ingredients: '', steps: '' });
     }
   };
 
@@ -76,19 +73,19 @@ function AddRecipeForm() {
         </div>
 
         <div className="mb-6">
-          <label htmlFor="instructions" className="block text-gray-700 font-semibold mb-2">
+          <label htmlFor="steps" className="block text-gray-700 font-semibold mb-2">
             Preparation Steps
           </label>
           <textarea
-            id="instructions"
-            name="instructions"
-            value={formData.instructions}
+            id="steps"
+            name="steps"
+            value={formData.steps}
             onChange={handleChange}
             rows="6"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Enter step-by-step instructions"
           />
-          {errors.instructions && <p className="text-red-500 text-sm mt-1">{errors.instructions}</p>}
+          {errors.steps && <p className="text-red-500 text-sm mt-1">{errors.steps}</p>}
         </div>
 
         <button
