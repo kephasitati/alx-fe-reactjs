@@ -12,6 +12,14 @@ function HomePage() {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6 text-center">Recipe Sharing Platform</h1>
+      <div className="text-center mb-6">
+        <Link
+          to="/add"
+          className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition-colors"
+        >
+          Add New Recipe
+        </Link>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {recipes.map(recipe => (
           <div
