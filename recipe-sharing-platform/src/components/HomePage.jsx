@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import data from '../data.json';  // Import directly from src/data.json
 
 function HomePage() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    fetch('/data.json')  // Fetches from public/data.json
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => setRecipes(data))
-      .catch(error => console.error('Error fetching recipes:', error));
+    setRecipes(data);  // Load data into state on mount
   }, []);
 
   return (
@@ -33,18 +26,12 @@ function HomePage() {
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2">{recipe.title}</h2>
               <p className="text-gray-700 mb-4">{recipe.summary}</p>
-              <a
-                href={`/recipe/${recipe.id}`}
+              <Link
+                to={`/recipe/${recipe.id}`}
                 className="text-blue-500 hover:underline font-medium"
               >
-                <Link
-                    to={`/recipe/${recipe.id}`}
-                    className="text-blue-500 hover:underline font-medium"
-                    >
-                    View Details
-                </Link>
                 View Details
-              </a>
+              </Link>
             </div>
           </div>
         ))}

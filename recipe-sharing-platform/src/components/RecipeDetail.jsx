@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import data from '../data.json';  // Import directly from src/data.json
 
 function RecipeDetail() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
-    fetch('/data.json')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        const foundRecipe = data.find(r => r.id === parseInt(id));
-        setRecipe(foundRecipe);
-      })
-      .catch(error => console.error('Error fetching recipe:', error));
+    const foundRecipe = data.find(r => r.id === parseInt(id));
+    setRecipe(foundRecipe);
   }, [id]);
 
   if (!recipe) {

@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+    "image": "https://via.placeholder.com/150",
+    "ingredients": [
+      "200g spaghetti",
+      "100g pancetta or bacon",
+      "2 large eggs",
+      "50g Pecorino cheese",
+      "Freshly ground black pepper"
+    ],
+    "instructions": "1. Cook spaghetti in boiling salted water until al dente. 2. Fry pancetta until crisp. 3. Whisk eggs and cheese together. 4. Drain pasta, mix with pancetta, then stir in egg mixture off the heat. 5. Season with black pepper and serve."
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
+    "image": "https://via.placeholder.com/150",
+    "ingredients": [
+      "500g chicken breast",
+      "1 cup yogurt",
+      "2 tbsp garam masala",
+      "1 can tomato sauce",
+      "1 cup heavy cream"
+    ],
+    "instructions": "1. Marinate chicken in yogurt and spices. 2. Grill or bake chicken until charred. 3. Simmer tomato sauce with spices. 4. Add cream and cooked chicken. 5. Serve with rice or naan."
+  },
+  {
+    "id": 3,
+    "title": "Vegetable Stir Fry",
+    "summary": "A quick and healthy mix of fresh vegetables stir-fried with soy sauce and garlic.",
+    "image": "https://via.placeholder.com/150",
+    "ingredients": [
+      "2 cups mixed vegetables (broccoli, carrots, bell peppers)",
+      "3 cloves garlic",
+      "2 tbsp soy sauce",
+      "1 tbsp sesame oil",
+      "1 tsp ginger"
+    ],
+    "instructions": "1. Heat oil in a wok. 2. Add garlic and ginger, stir-fry for 30 seconds. 3. Add vegetables and cook until tender-crisp. 4. Stir in soy sauce. 5. Serve hot."
+  },
+  {
+    "id": 4,
+    "title": "Chocolate Chip Cookies",
+    "summary": "Soft and chewy cookies loaded with chocolate chips and a hint of vanilla.",
+    "image": "https://via.placeholder.com/150",
+    "ingredients": [
+      "2 cups flour",
+      "1 cup butter",
+      "1 cup sugar",
+      "2 eggs",
+      "1 cup chocolate chips"
+    ],
+    "instructions": "1. Cream butter and sugar. 2. Add eggs and vanilla. 3. Mix in flour and chocolate chips. 4. Drop spoonfuls onto a baking sheet. 5. Bake at 350°F for 10-12 minutes."
+  }
+]
