@@ -2,21 +2,27 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export default function RegistrationForm() {
-  // Step 1: Manage form state with useState
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({}); // ✅ added for validation
   const [message, setMessage] = useState("");
 
-  // Step 2: Handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Basic validation
-    if (!username || !email || !password) {
-      setMessage("All fields are required!");
+    // ✅ validation checks
+    const newErrors = {};
+    if (!username) newErrors.username = "Username is required";
+    if (!email) newErrors.email = "Email is required";        // ✅ this line
+    if (!password) newErrors.password = "Password is required"; // ✅ this line
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors); // ✅ sets validation errors
       return;
     }
+
+    setErrors({});
 
     try {
       const response = await axios.post("https://jsonplaceholder.typicode.com/users", {
@@ -25,7 +31,6 @@ export default function RegistrationForm() {
         password,
       });
       setMessage(`User ${response.data.username} registered successfully!`);
-      // Clear inputs
       setUsername("");
       setEmail("");
       setPassword("");
@@ -43,9 +48,10 @@ export default function RegistrationForm() {
           <label>Username:</label>
           <input
             type="text"
-            value={username}           // ✅ controlled input
-            onChange={(e) => setUsername(e.target.value)} // ✅ updates state
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
+          {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
         </div>
 
         {/* email */}
@@ -53,9 +59,10 @@ export default function RegistrationForm() {
           <label>Email:</label>
           <input
             type="email"
-            value={email}              // ✅ controlled input
-            onChange={(e) => setEmail(e.target.value)}    // ✅ updates state
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
+          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
         </div>
 
         {/* password */}
@@ -63,9 +70,10 @@ export default function RegistrationForm() {
           <label>Password:</label>
           <input
             type="password"
-            value={password}           // ✅ controlled input
-            onChange={(e) => setPassword(e.target.value)} // ✅ updates state
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
+          {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
         </div>
 
         <button type="submit">Register</button>
