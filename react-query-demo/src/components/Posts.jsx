@@ -1,0 +1,35 @@
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+
+export default function Posts() {
+  const fetchPosts = async () => {
+    const { data } = await axios.get("https://jsonplaceholder.typicode.com/posts");
+    return data;
+  };
+
+  const { data, error, isLoading, isError, isFetching } = useQuery("posts", fetchPosts, {
+    staleTime: 30000, // 30 seconds
+    cacheTime: 60000, // 1 minute
+    refetchOnWindowFocus: false,
+  });
+
+  if (isLoading) return <p>Loading posts...</p>;
+  if (isError) return <p>Error: {error.message}</p>;
+
+  return (
+    <div>
+      <p style={{ color: "gray" }}>
+        {isFetching ? "Updating..." : "Up to date"}
+      </p>
+      <ul>
+        {data.slice(0, 10).map((post) => (
+          <li key={post.id}>
+            <strong>{post.title}</strong>
+            <p>{post.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
