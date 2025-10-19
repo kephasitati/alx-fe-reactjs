@@ -1,17 +1,18 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useQuery } from "@tanstack/react-query";
-import Posts from "./components/Posts";
+import PostsComponent from "./components/Posts";
 
 const queryClient = new QueryClient();
 
-export default function App() {
+function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div style={{ padding: "20px", fontFamily: "sans-serif" }}>
+      <div style={{ padding: "2rem" }}>
         <h1>React Query Demo</h1>
-        <Posts />
+        <PostsComponent />
       </div>
     </QueryClientProvider>
   );
 }
+
+export default App;
