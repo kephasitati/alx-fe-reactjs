@@ -1,5 +1,5 @@
+// src/components/ProfileDetails.jsx
 import React from "react";
-
 export default function ProfileDetails() {
-  return <div><h3>Profile Details Section</h3></div>;
+  return <div>Here are your profile details.</div>;
 }
