@@ -9,12 +9,12 @@ export default function PostsComponent() {
     return data;
   };
 
-  const { data, error, isLoading, isError, isFetching } = useQuery({
+  const { data, error, isLoading, isError, isFetching, refetch } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchPosts,
     staleTime: 30000,
     cacheTime: 60000,
-    keepPreviousData: true, // 👈 this is what the checker wants
+    keepPreviousData: true,
     refetchOnWindowFocus: false,
   });
 
@@ -26,6 +26,12 @@ export default function PostsComponent() {
       <p style={{ color: "gray" }}>
         {isFetching ? "Updating..." : "Up to date"}
       </p>
+
+      {/* ✅ Button with onClick */}
+      <button onClick={() => refetch()} style={{ marginBottom: "1rem" }}>
+        Refetch Posts
+      </button>
+
       <ul>
         {data.slice(0, 10).map((post) => (
           <li key={post.id}>
